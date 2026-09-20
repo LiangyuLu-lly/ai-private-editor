@@ -1,0 +1,44 @@
+{
+  "name": "browser-privacy-composer",
+  "version": "0.4.4",
+  "private": true,
+  "license": "GPL-3.0-or-later",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LiangyuLu-lly/ai-private-editor.git"
+  },
+  "type": "module",
+  "files": [
+    "dist",
+    "README.md",
+    "PRIVACY.md",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "package": "node scripts/build.mjs && node scripts/package-extension.mjs",
+    "verify:release": "node scripts/verify-release-consistency.mjs",
+    "selfcheck:expectations": "node scripts/emit-selfcheck-expectations.mjs",
+    "store:assets": "node scripts/build.mjs && node scripts/capture-store-assets.mjs",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:browser": "node --test tests/browser/exif-redaction.test.mjs tests/browser/neural-offscreen.test.mjs",
+    "icons": "node scripts/generate-icons.mjs"
+  },
+  "devDependencies": {
+    "@types/chrome": "^0.0.307",
+    "@types/jsdom": "^21.1.7",
+    "esbuild": "^0.25.4",
+    "jsdom": "^26.1.0",
+    "playwright-core": "1.62.1",
+    "typescript": "^5.8.3",
+    "vitest": "^3.2.4"
+  },
+  "dependencies": {
+    "jszip": "^3.10.1",
+    "onnxruntime-web": "1.29.0",
+    "pdfjs-dist": "^6.2.108",
+    "tesseract.js": "^7.0.0",
+    "tesseract.js-core": "^7.0.0"
+  }
+}
