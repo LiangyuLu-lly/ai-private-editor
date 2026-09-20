@@ -28,7 +28,7 @@ Edge 与 Chrome 用**同一 zip**。本仓库尚未做 Edge 登录态发送验�
 启用 GitHub Pages 后（`docs/`）：
 
 ```
-https://liangyulul-lly.github.io/ai-private-editor/privacy.html
+https://liangyulu-lly.github.io/ai-private-editor/privacy.html
 ```
 
 打不开就先用（公开仓库、无需登录）：
