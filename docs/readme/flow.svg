@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="220" viewBox="0 0 920 220" role="img" aria-label="Send path">
+  <rect width="920" height="220" fill="#ffffff"/>
+  <g font-family="system-ui, 'PingFang SC', 'Microsoft YaHei UI', sans-serif">
+    <rect x="16" y="48" width="160" height="88" rx="10" fill="#111111"/>
+    <text x="96" y="86" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="700">聊天输入框</text>
+    <text x="96" y="108" text-anchor="middle" fill="#bbbbbb" font-size="12">Chat composer</text>
+
+    <polygon points="188,92 212,92 212,84 236,96 212,108 212,100 188,100" fill="#888888"/>
+
+    <rect x="252" y="48" width="176" height="88" rx="10" fill="#15803d"/>
+    <text x="340" y="86" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="700">本机检查</text>
+    <text x="340" y="108" text-anchor="middle" fill="#d1fae5" font-size="12">On-device gate</text>
+
+    <polygon points="440,92 464,92 464,84 488,96 464,108 464,100 440,100" fill="#888888"/>
+
+    <rect x="504" y="16" width="184" height="72" rx="10" fill="#0f766e"/>
+    <text x="596" y="48" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">令牌 / 确认</text>
+    <text x="596" y="68" text-anchor="middle" fill="#ccfbf1" font-size="12">Token or confirm</text>
+
+    <rect x="504" y="108" width="184" height="72" rx="10" fill="#b45309"/>
+    <text x="596" y="140" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">未接管则放行</text>
+    <text x="596" y="160" text-anchor="middle" fill="#ffedd5" font-size="12">OFF = native send</text>
+
+    <polygon points="700,52 724,52 724,44 748,56 724,68 724,60 700,60" fill="#888888"/>
+    <polygon points="700,144 724,144 724,136 748,148 724,160 724,152 700,152" fill="#888888"/>
+
+    <rect x="764" y="48" width="140" height="88" rx="10" fill="#111111"/>
+    <text x="834" y="86" text-anchor="middle" fill="#ffffff" font-size="15" font-weight="700">网站</text>
+    <text x="834" y="108" text-anchor="middle" fill="#bbbbbb" font-size="12">Chat site</text>
+  </g>
+</svg>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>confirmation preview</title>
+    <link rel="stylesheet" href="../../src/content.css" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+        background: #e8edf2;
+        font: 14px/1.6 system-ui, "PingFang SC", "Microsoft YaHei UI", sans-serif;
+      }
+      .stage {
+        position: relative;
+        width: 720px;
+        height: 420px;
+        margin: 0;
+        background: linear-gradient(180deg, #f7f8fa 0%, #eef1f4 100%);
+      }
+      .chat {
+        padding: 20px 24px;
+        color: #8a9199;
+        font-size: 13px;
+      }
+      .chat p {
+        margin: 0 0 10px;
+        max-width: 280px;
+        padding: 10px 12px;
+        border-radius: 10px;
+        background: #fff;
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="stage">
+      <div class="chat">
+        <p>请把客户交接写成邮件。</p>
+      </div>
+      <div class="privacy-composer-confirmation" role="dialog" aria-labelledby="confirm-title">
+        <h2 id="confirm-title">发送前确认</h2>
+        <p class="privacy-composer-confirmation-description">
+          草稿含可识别敏感项。默认匿名化发送。确认框只显示类别，不显示原文。
+        </p>
+        <ul class="privacy-composer-confirmation-list">
+          <li>手机号 1 项</li>
+          <li>姓名 1 项（本地语义候选）</li>
+        </ul>
+        <div class="privacy-composer-confirmation-actions">
+          <button type="button">取消</button>
+          <button type="button">本会话允许</button>
+          <button type="button" class="privacy-composer-confirmation-redact">匿名化发送</button>
+          <button type="button" class="privacy-composer-confirmation-raw">仅本次发送原文（需再点一次）</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
