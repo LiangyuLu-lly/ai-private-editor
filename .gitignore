@@ -1,0 +1,32 @@
+node_modules/
+dist/
+# Offline harness scratch bundles. Deliberately not under dist/: Chrome refuses to load an
+# extension containing any name starting with "_", so a bundle there breaks installation.
+.harness-tmp/
+.harness-tmp-*
+# Store upload artifacts, produced by `npm run package`.
+release/
+output/
+.playwright-cli/
+*.zip
+*.yml
+*.yaml
+*.docx
+*.pdf
+mechrevo-bios-downloads/
+local-models/
+model-cache/
+
+# Local training tree, agent caches, and debug leftovers — not in the public extension repo.
+ml/
+docs/superpowers/
+design-previews/
+.omo/
+.codegraph/
+.ruff_cache/
+.pytest_cache/
+reports/
+tmp-*.mjs
+*.log
+*.jsonl
+报告.txt
