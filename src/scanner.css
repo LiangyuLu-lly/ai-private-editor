@@ -1,0 +1,282 @@
+:root {
+  color-scheme: light;
+  font-family: "Microsoft YaHei UI", "Microsoft YaHei", system-ui, sans-serif;
+  color: #18202b;
+  background: #f4f6f8;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #f4f6f8;
+}
+
+button,
+input,
+a {
+  font: inherit;
+}
+
+.scanner {
+  width: min(880px, 100%);
+  margin: 0 auto;
+  padding: 24px 20px 28px;
+}
+
+.scanner-header,
+.file-picker-row,
+.scanner-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.scanner-header {
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 20px;
+  line-height: 1.3;
+  font-weight: 700;
+}
+
+.scanner-header p,
+.scan-coverage,
+.scanner-boundary {
+  color: #5c6878;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.scanner-header p {
+  margin-top: 4px;
+}
+
+.back-link {
+  color: #185f99;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.back-link:focus-visible,
+.file-picker:focus-within,
+button:focus-visible {
+  outline: 2px solid #1673b5;
+  outline-offset: 2px;
+}
+
+.scanner-workbench {
+  border: 1px solid #ccd5de;
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 18px;
+}
+
+.file-picker-row {
+  flex-wrap: wrap;
+}
+
+.file-picker,
+button {
+  min-height: 34px;
+  border: 1px solid #1c6fae;
+  border-radius: 6px;
+  padding: 6px 12px;
+  color: #ffffff;
+  background: #1c6fae;
+  cursor: pointer;
+}
+
+.file-picker:hover,
+button:hover:not(:disabled) {
+  background: #155b90;
+}
+
+#scan-file {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.selected-file {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  color: #4e5d6f;
+  font-size: 13px;
+}
+
+.scan-status {
+  min-height: 22px;
+  margin-top: 16px;
+  color: #1c2d3e;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.scan-status[data-state="error"] {
+  color: #a63131;
+}
+
+.scan-status[data-state="warning"] {
+  color: #8a5a06;
+}
+
+.scan-neural-notice {
+  min-height: 20px;
+  margin: 4px 0 0;
+  color: #8a5a06;
+  font-size: 13px;
+}
+
+.scan-neural-notice[hidden] {
+  display: none;
+}
+
+.scan-coverage {
+  min-height: 20px;
+  margin-top: 4px;
+}
+
+.scanner-results {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.7fr) minmax(0, 1.3fr);
+  gap: 20px;
+  margin-top: 20px;
+  border-top: 1px solid #e0e6ec;
+  padding-top: 18px;
+}
+
+h2 {
+  color: #344151;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.scan-findings {
+  display: grid;
+  gap: 6px;
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.scan-findings li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid #edf1f4;
+  padding: 5px 0;
+  color: #344151;
+  font-size: 13px;
+}
+
+.scan-findings .empty-findings {
+  display: block;
+  color: #6a7786;
+}
+
+.scan-preview {
+  display: block;
+  min-height: 130px;
+  max-height: 320px;
+  width: 100%;
+  margin: 10px 0 0;
+  overflow: auto;
+  border: 1px solid #d7e0e8;
+  border-radius: 6px;
+  padding: 10px;
+  color: #233244;
+  background: #f8fafb;
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+  font-size: 12px;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.scan-image-preview {
+  display: block;
+  max-height: 320px;
+  max-width: 100%;
+  margin-top: 10px;
+  border: 1px solid #d7e0e8;
+  border-radius: 6px;
+  background: #f8fafb;
+  object-fit: contain;
+}
+
+.scan-image-preview[hidden] {
+  display: none;
+}
+
+.scanner-actions {
+  justify-content: flex-end;
+  margin-top: 18px;
+}
+
+.review-button {
+  border-color: #9a6700;
+  color: #6f4a00;
+  background: #fff8e8;
+}
+
+.review-button:hover:not(:disabled) {
+  background: #ffefc8;
+}
+
+#clear-scan {
+  border-color: #aebbc7;
+  color: #344151;
+  background: #ffffff;
+}
+
+#clear-scan:hover:not(:disabled) {
+  background: #edf2f6;
+}
+
+button:disabled {
+  border-color: #ccd5de;
+  color: #8b98a5;
+  background: #eef2f5;
+  cursor: default;
+}
+
+.scanner-boundary {
+  margin-top: 12px;
+}
+
+@media (max-width: 600px) {
+  .scanner {
+    padding: 16px 12px 22px;
+  }
+
+  .scanner-workbench {
+    padding: 14px;
+  }
+
+  .scanner-results {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+  }
+
+  .scanner-actions {
+    justify-content: stretch;
+  }
+
+  .scanner-actions button {
+    flex: 1;
+  }
+}

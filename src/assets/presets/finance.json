@@ -1,0 +1,22 @@
+{
+  "settingsVersion": 1,
+  "categoryPolicies": [
+    { "kind": "api_key", "action": "confirm" },
+    { "kind": "access_token", "action": "confirm" },
+    { "kind": "private_key", "action": "block" },
+    { "kind": "connection_string", "action": "block" },
+    { "kind": "credential", "action": "block" },
+    { "kind": "bank_card", "action": "confirm" },
+    { "kind": "bank_account", "action": "confirm" },
+    { "kind": "china_id", "action": "confirm" },
+    { "kind": "unified_social_credit_code", "action": "confirm" },
+    { "kind": "phone", "action": "confirm" },
+    { "kind": "email", "action": "confirm" },
+    { "kind": "person_name", "action": "confirm" },
+    { "kind": "account", "action": "confirm" },
+    { "kind": "labeled_identifier", "action": "confirm" },
+    { "kind": "passport", "action": "confirm" },
+    { "kind": "private_url", "action": "confirm" },
+    { "kind": "address", "action": "confirm" }
+  ]
+}

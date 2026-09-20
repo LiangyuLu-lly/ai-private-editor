@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>本地文件扫描</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="scanner.css" />
+  </head>
+  <body>
+    <main class="scanner" aria-labelledby="scanner-title">
+      <header class="scanner-header">
+        <div>
+          <h1 id="scanner-title">本地文件扫描</h1>
+          <p>文件只在此浏览器内处理。</p>
+        </div>
+        <a class="back-link" href="popup.html" aria-label="返回扩展设置">设置</a>
+      </header>
+
+      <section class="scanner-workbench" aria-label="文件扫描工作区">
+        <div class="file-picker-row">
+          <label class="file-picker" for="scan-file">选择文件</label>
+          <input id="scan-file" type="file" accept=".txt,.md,.csv,.tsv,.json,.yaml,.yml,.xml,.html,.css,.js,.ts,.tsx,.jsx,.py,.java,.go,.sql,.log,.docx,.xlsx,.pdf,.png,.jpg,.jpeg,.webp" />
+          <span id="selected-file" class="selected-file">未选择文件</span>
+        </div>
+        <p id="scan-status" class="scan-status" role="status" aria-live="polite">未选择文件</p>
+        <p id="scan-neural-notice" class="scan-neural-notice" hidden role="status">扫描未跑神经模型</p>
+        <p id="scan-coverage" class="scan-coverage">支持文本、DOCX、XLSX、PDF 文本层和 PNG/JPEG/WebP。</p>
+
+        <div class="scanner-results">
+          <section class="findings-section" aria-labelledby="findings-title">
+            <h2 id="findings-title">发现项</h2>
+            <ul id="scan-findings" class="scan-findings" aria-label="已识别敏感类别">
+              <li class="empty-findings">尚无扫描结果。</li>
+            </ul>
+          </section>
+          <section class="preview-section" aria-labelledby="preview-title">
+            <h2 id="preview-title">处理副本预览</h2>
+            <pre id="scan-preview" class="scan-preview" aria-live="polite"></pre>
+            <img id="scan-image-preview" class="scan-image-preview" alt="已打码图片预览" hidden />
+          </section>
+        </div>
+
+        <div class="scanner-actions">
+          <button id="acknowledge-review" class="review-button" type="button" hidden>确认结果</button>
+          <button id="download-redacted" type="button" disabled>下载处理副本</button>
+          <button id="clear-scan" type="button" disabled>清除</button>
+        </div>
+      </section>
+
+      <p class="scanner-boundary">先扫描，再手动上传处理副本。网站选择文件后可能已开始上传原件。</p>
+    </main>
+    <script src="scanner.js"></script>
+  </body>
+</html>

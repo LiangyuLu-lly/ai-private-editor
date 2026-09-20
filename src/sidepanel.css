@@ -1,0 +1,280 @@
+:root {
+  color-scheme: light;
+  font-family: "Microsoft YaHei UI", "Noto Sans SC", ui-sans-serif, system-ui, sans-serif;
+  color: #17211e;
+  background: #f6f8f7;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 300px;
+  margin: 0;
+  background: #f6f8f7;
+}
+
+button,
+textarea {
+  font: inherit;
+}
+
+button {
+  min-height: 36px;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+.panel {
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: auto auto auto auto 1fr auto;
+  gap: 16px;
+  padding: 20px;
+}
+
+.panel-header {
+  display: grid;
+  gap: 8px;
+}
+
+.title-row,
+.section-heading,
+.draft-actions,
+.fill-bar {
+  display: flex;
+  align-items: center;
+}
+
+.title-row {
+  justify-content: space-between;
+  gap: 12px;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-family: "Songti SC", "STSong", ui-serif, serif;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h2,
+label,
+summary {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.local-badge {
+  flex: 0 0 auto;
+  padding: 3px 7px;
+  border: 1px solid #0f766e;
+  border-radius: 4px;
+  color: #0f766e;
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.site-status,
+#result-status {
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.site-status {
+  padding-left: 9px;
+  border-left: 3px solid #94a3b8;
+  color: #475569;
+}
+
+.site-status[data-state="ready"] {
+  border-color: #0f766e;
+  color: #115e59;
+}
+
+.site-status[data-state="unsupported"],
+#result-status[data-state="error"] {
+  border-color: #b45309;
+  color: #92400e;
+}
+
+.boundary-rail {
+  display: grid;
+  grid-template-columns: auto minmax(24px, 1fr) auto;
+  align-items: center;
+  gap: 8px;
+  color: #52615c;
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.boundary-line {
+  border-top: 1px dashed #0f766e;
+}
+
+.draft-section {
+  display: grid;
+  gap: 8px;
+}
+
+textarea,
+.outbound-preview {
+  width: 100%;
+  border: 1px solid #b8c3bd;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #17211e;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+textarea {
+  min-height: 168px;
+  padding: 10px 11px;
+  resize: vertical;
+}
+
+textarea:focus-visible,
+button:focus-visible,
+summary:focus-visible {
+  outline: 3px solid #7dd3c7;
+  outline-offset: 2px;
+}
+
+.draft-actions {
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.secondary-button,
+.primary-button,
+.text-button {
+  border-radius: 5px;
+  font-weight: 700;
+}
+
+.secondary-button {
+  border: 1px solid #0f766e;
+  padding: 0 12px;
+  background: #ffffff;
+  color: #0f766e;
+}
+
+.secondary-button:hover:not(:disabled) {
+  background: #ecfdf5;
+}
+
+.text-button {
+  border: 0;
+  padding: 0 4px;
+  background: transparent;
+  color: #52615c;
+}
+
+.text-button:hover:not(:disabled) {
+  color: #17211e;
+  text-decoration: underline;
+}
+
+.preview-section {
+  display: grid;
+  min-height: 0;
+  gap: 8px;
+  border-top: 1px solid #d6dfda;
+  padding-top: 16px;
+}
+
+.private-boundary-note {
+  margin: 0;
+  color: #52615c;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.section-heading {
+  justify-content: space-between;
+  gap: 12px;
+}
+
+#result-status {
+  max-width: 68%;
+  text-align: right;
+}
+
+#result-status[data-state="ready"] {
+  color: #0f766e;
+}
+
+#result-status[data-state="blocked"] {
+  color: #b42318;
+}
+
+.outbound-preview {
+  min-height: 104px;
+  margin: 0;
+  padding: 10px 11px;
+  overflow: auto;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.fill-bar {
+  justify-content: flex-end;
+  border-top: 1px solid #d6dfda;
+  padding-top: 16px;
+}
+
+.primary-button {
+  min-width: 112px;
+  border: 1px solid #0f766e;
+  padding: 0 16px;
+  background: #0f766e;
+  color: #ffffff;
+}
+
+.primary-button:hover:not(:disabled) {
+  background: #115e59;
+}
+
+.primary-button:disabled,
+.secondary-button:disabled {
+  border-color: #cbd5d0;
+  background: #e7ece9;
+  color: #829089;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+@media (max-width: 340px) {
+  .panel {
+    padding: 16px;
+  }
+
+  .section-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  #result-status {
+    max-width: none;
+    text-align: left;
+  }
+}

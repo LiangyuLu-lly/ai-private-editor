@@ -1,0 +1,214 @@
+:root {
+  color-scheme: light dark;
+  --surface: Canvas;
+  --ink: CanvasText;
+  --muted: color-mix(in srgb, CanvasText 60%, Canvas);
+  --line: color-mix(in srgb, CanvasText 22%, Canvas);
+  --pass: #1a7f37;
+  --fail: #b42318;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 24px;
+  background: var(--surface);
+  color: var(--ink);
+  font: 14px/1.6 system-ui, "Segoe UI", "Microsoft YaHei", sans-serif;
+}
+
+.diagnostics {
+  max-width: 1040px;
+  margin: 0 auto;
+  display: grid;
+  gap: 20px;
+}
+
+.diagnostics-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 16px;
+}
+
+.diagnostics-header h1 {
+  margin: 0 0 4px;
+  font-size: 20px;
+}
+
+.diagnostics-header p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.back-link {
+  flex: none;
+  color: inherit;
+  text-decoration: none;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 6px 12px;
+}
+
+.back-link:hover,
+.back-link:focus-visible {
+  border-color: var(--ink);
+}
+
+.run-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.run-button,
+.secondary-button {
+  font: inherit;
+  padding: 8px 18px;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, CanvasText 6%, Canvas);
+  color: inherit;
+  cursor: pointer;
+}
+
+.run-button {
+  font-weight: 600;
+}
+
+.run-button:hover:not(:disabled),
+.secondary-button:hover {
+  border-color: var(--ink);
+}
+
+.run-button:disabled {
+  cursor: progress;
+  opacity: 0.6;
+}
+
+.run-status {
+  margin: 0;
+  color: var(--muted);
+}
+
+.run-status.ok {
+  color: var(--pass);
+  font-weight: 600;
+}
+
+.run-status.bad {
+  color: var(--fail);
+  font-weight: 600;
+}
+
+.panel {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.panel h2 {
+  margin: 0 0 8px;
+  font-size: 15px;
+}
+
+.panel-note {
+  margin: 0 0 12px;
+  color: var(--muted);
+}
+
+.panel-note code {
+  font-size: 12px;
+}
+
+.kv-list {
+  margin: 0;
+  display: grid;
+  grid-template-columns: minmax(160px, max-content) 1fr;
+  gap: 4px 16px;
+}
+
+.kv-list dt {
+  color: var(--muted);
+}
+
+.kv-list dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.cases-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.cases-table th,
+.cases-table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 8px 10px;
+  border-top: 1px solid var(--line);
+}
+
+.cases-table thead th {
+  border-top: none;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.verdict {
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.verdict.pass {
+  color: var(--pass);
+}
+
+.verdict.fail {
+  color: var(--fail);
+}
+
+.draft,
+.spans {
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.note {
+  color: var(--muted);
+}
+
+.timing {
+  white-space: nowrap;
+  text-align: right;
+}
+
+.report {
+  width: 100%;
+  font-family: ui-monospace, "Cascadia Code", Consolas, monospace;
+  font-size: 12px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 10px;
+  background: color-mix(in srgb, CanvasText 4%, Canvas);
+  color: inherit;
+  resize: vertical;
+  margin-bottom: 10px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

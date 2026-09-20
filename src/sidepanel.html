@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI 私密编辑</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="sidepanel.css" />
+  </head>
+  <body>
+    <main id="app" class="panel" aria-labelledby="panel-title">
+      <header class="panel-header">
+        <div class="title-row">
+          <h1 id="panel-title">AI 私密编辑</h1>
+          <span class="local-badge">本地处理</span>
+        </div>
+        <p id="site-status" class="site-status" data-state="loading" aria-live="polite">正在识别当前网页</p>
+      </header>
+
+      <div class="boundary-rail" aria-label="本地草稿到出站文本的边界">
+        <span>本地草稿</span>
+        <span class="boundary-line" aria-hidden="true"></span>
+        <span>出站文本</span>
+      </div>
+
+      <section class="draft-section" aria-labelledby="draft-label">
+        <label id="draft-label" for="draft-input">私密草稿</label>
+        <textarea
+          id="draft-input"
+          rows="9"
+          spellcheck="false"
+          placeholder="在这里输入需要处理的内容"
+        ></textarea>
+      </section>
+
+      <div class="draft-actions">
+        <button id="check-button" class="secondary-button" type="button" disabled>检查并预览</button>
+        <button id="clear-button" class="text-button" type="button">清空草稿</button>
+      </div>
+
+      <section class="preview-section" aria-labelledby="preview-title">
+        <div class="section-heading">
+          <h2 id="preview-title">出站预览</h2>
+          <span id="result-status" data-state="neutral" aria-live="polite">等待本地检查</span>
+        </div>
+        <p class="private-boundary-note">草稿仅保留在此扩展页面内存；填入网页的仅是本地检查后生成的出站文本。</p>
+        <pre id="outbound-preview" class="outbound-preview" aria-live="polite"></pre>
+      </section>
+
+      <footer class="fill-bar">
+        <button id="fill-button" class="primary-button" type="button" disabled>填入网页</button>
+      </footer>
+    </main>
+    <script src="sidepanel.js"></script>
+  </body>
+</html>

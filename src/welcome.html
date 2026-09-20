@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI 私密编辑 — 已启用</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="welcome.css" />
+  </head>
+  <body>
+    <main class="welcome" aria-labelledby="welcome-title">
+      <header class="welcome-header">
+        <h1 id="welcome-title">发送前会在本机检查</h1>
+        <p id="update-banner" class="update-banner" hidden>
+          这次更新只改说明，不改你已经选好的检测档位。姓名可能漏检，漏了不会弹窗。
+        </p>
+        <p class="lede">
+          在支持的 AI 聊天网页上，点发送或粘贴纯文本时，扩展会在<strong>这台设备上</strong>检查草稿。
+          不联网、不上传、不记录原文。这不是「所有敏感信息都已被挡住」。
+        </p>
+      </header>
+
+      <section class="panel" aria-labelledby="default-title">
+        <h2 id="default-title">默认已经打开的是哪一档</h2>
+        <dl class="setting-list">
+          <dt>检测档位</dt>
+          <dd><strong>平衡</strong>——手机号、邮箱、身份证等有格式的类型较稳；人名和地址靠本地模型辅助。</dd>
+          <dt>语义审查</dt>
+          <dd><strong>本地神经模型</strong>——约 12 MB 的模型随扩展分发，在本机运行。没认出的姓名<strong>不会弹出任何提示</strong>。</dd>
+        </dl>
+        <p class="note">
+          默认打开模型，是为了减少「没有提示词的人名、地址」原样发出。它会漏，也会偶尔多问一次。
+          客户名、同事名请加进<strong>自定义敏感词</strong>，不要假设模型能替你挡住。
+        </p>
+        <p class="note">
+          模型给出的判断<strong>只会请你确认，不会自己改写</strong>。加载失败或超时不会假装已经扫过：
+          默认请取消；按原文交给网页需要再确认一次。
+        </p>
+      </section>
+
+      <section class="panel" aria-labelledby="choice-title">
+        <h2 id="choice-title">如果提示太多</h2>
+        <p class="note">
+          「更少提示」会关掉本地模型：只拦手机号、身份证、带「对接人：」这类提示词的字段。
+          <strong>没有提示词的人名几乎不会再提示</strong>，原文会按网页路径发出。随时可在设置里改回来。
+        </p>
+        <div class="actions">
+          <button id="fewer-prompts" type="button" class="secondary-button">改成更少提示</button>
+          <button id="keep-default" type="button" class="primary-button">保持推荐设置</button>
+          <button id="dismiss-update" type="button" class="secondary-button" hidden>知道了</button>
+        </div>
+        <p id="choice-status" class="choice-status" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="panel" aria-labelledby="next-title">
+        <h2 id="next-title">接下来</h2>
+        <ol class="next-steps">
+          <li>打开一个支持的站点，看工具栏是否为 ON。检测到的内容会在发送前确认；没列出来的姓名不会提示。</li>
+          <li>有自己的敏感词（项目代号、内部系统名）就加进<strong>自定义敏感词</strong>，只存在本机。</li>
+          <li>想确认模型真的在这台机器上跑起来了，打开<a id="open-diagnostics" href="diagnostics.html">本地模型自检</a>，一分钟出结果。</li>
+        </ol>
+      </section>
+
+      <footer class="welcome-footer">
+        <a id="open-settings" href="popup.html">打开设置</a>
+        <span aria-hidden="true">·</span>
+        <a href="diagnostics.html">本地模型自检</a>
+      </footer>
+    </main>
+    <script src="welcome.js"></script>
+  </body>
+</html>

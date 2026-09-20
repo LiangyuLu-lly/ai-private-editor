@@ -1,0 +1,39 @@
+{
+  "artifact": "r9-electra-chat-augmented/checkpoint-3798",
+  "base_model": "hfl/chinese-electra-small-discriminator",
+  "base_model_license": "Apache-2.0",
+  "training_data": "data/curated/r9-chat-mixed/train-disjoint.jsonl",
+  "teacher": null,
+  "distillation": null,
+  "decoder": "constrained-bie",
+  "inputs": [
+    "input_ids",
+    "attention_mask",
+    "token_type_ids"
+  ],
+  "labels": {
+    "0": "O",
+    "1": "B-PERSON",
+    "2": "I-PERSON",
+    "3": "E-PERSON",
+    "4": "B-ADDRESS",
+    "5": "I-ADDRESS",
+    "6": "E-ADDRESS",
+    "7": "B-ACCOUNT_ALIAS",
+    "8": "I-ACCOUNT_ALIAS",
+    "9": "E-ACCOUNT_ALIAS"
+  },
+  "max_length": 256,
+  "stride": 64,
+  "threshold": 0.15,
+  "offset_unit": "utf16_code_unit",
+  "notes": [
+    "R9 starts from the shipped R8b student and adds 30,000 leakage-isolated chat-shaped semantic examples. The mix is filtered against the R9 chat validation/test value pool; the resulting train set has zero shared text and zero shared PERSON, ADDRESS or ACCOUNT_ALIAS values with that pool.",
+    "The chat augmentation covers colloquial phrasing, emoji, slash-delimited fields, @ mentions, multi-turn snippets and negative reference contexts. It does not contain public benchmark or hidden-red-team rows.",
+    "R9 is direct supervised fine-tuning: distillation is null. The selected checkpoint is 3798 after two epochs.",
+    "offset_unit differs from the exporter's own manifest on purpose: the exporter records Python codepoint indices, and the browser works in UTF-16 code units. tests/fixtures/neural-tokenizer-fixtures.json carries both columns and tests/neural-tokenizer.test.ts asserts the UTF-16 one.",
+    "threshold is read from this manifest rather than hardcoded. R9 validation selection chose 0.15, and the browser product was evaluated at 0.15 before release. Any threshold change requires regenerating parity fixtures, self-check expectations and product evaluations.",
+    "ACCOUNT_ALIAS reaches the semantic hint layer only through a shape-and-context gate: the candidate must have an account-like Latin form and a nearby account cue. Numeric phone, card and passport-shaped spans are rejected by that gate; accepted account hints always require confirmation.",
+    "review.ts also drops PERSON spans matching the seven organisation names in hybrid.py's COMMON_NON_PERSON_NAMES. Measured across six sets it removes false positives and deletes zero gold-matching spans; the larger context-regex variants of that filter were measured and declined because they delete 66-221 real names."
+  ]
+}

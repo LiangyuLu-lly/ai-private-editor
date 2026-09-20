@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <title>本地语义模型</title>
+  </head>
+  <body>
+    <!--
+      Invisible host for the local student model.
+
+      It exists because the model needs a persistent extension-page context: the service worker
+      is torn down when idle, which would reload the model repeatedly, and a content script runs
+      under the page's CSP where WASM is not reliably available. Nothing is rendered.
+    -->
+    <script type="module" src="offscreen.js"></script>
+  </body>
+</html>

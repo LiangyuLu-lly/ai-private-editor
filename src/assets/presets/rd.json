@@ -1,0 +1,17 @@
+{
+  "settingsVersion": 1,
+  "categoryPolicies": [
+    { "kind": "api_key", "action": "block" },
+    { "kind": "access_token", "action": "block" },
+    { "kind": "private_key", "action": "block" },
+    { "kind": "connection_string", "action": "block" },
+    { "kind": "credential", "action": "block" },
+    { "kind": "local_path", "action": "confirm" },
+    { "kind": "ipv4", "action": "confirm" },
+    { "kind": "ipv6", "action": "confirm" },
+    { "kind": "mac_address", "action": "confirm" },
+    { "kind": "phone", "action": "replace" },
+    { "kind": "email", "action": "replace" },
+    { "kind": "account", "action": "confirm" }
+  ]
+}

@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>本地模型自检</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="diagnostics.css" />
+  </head>
+  <body>
+    <main class="diagnostics" aria-labelledby="diagnostics-title">
+      <header class="diagnostics-header">
+        <div>
+          <h1 id="diagnostics-title">本地模型自检</h1>
+          <p>检查本地语义模型能否在这个浏览器里加载并给出正确结果。全部在本机完成，不联网。</p>
+        </div>
+        <a class="back-link" href="popup.html" aria-label="返回扩展设置">设置</a>
+      </header>
+
+      <section class="run-row" aria-label="运行自检">
+        <button id="run-selfcheck" type="button" class="run-button">开始自检</button>
+        <p id="selfcheck-status" class="run-status" role="status" aria-live="polite">尚未运行。</p>
+      </section>
+
+      <section class="panel" aria-labelledby="environment-title">
+        <h2 id="environment-title">环境</h2>
+        <dl id="environment" class="kv-list">
+          <dt>读取中…</dt>
+          <dd></dd>
+        </dl>
+      </section>
+
+      <section class="panel" aria-labelledby="cases-title">
+        <h2 id="cases-title">逐条比对</h2>
+        <p class="panel-note">
+          预期跨度由离线参考路径算出（<code>scripts/emit-selfcheck-expectations.mjs</code>），
+          该路径与 Python 参考实现由金标准夹具钉住。这里比的是"这个浏览器"与"离线评测"是否一致。
+        </p>
+        <table class="cases-table">
+          <caption class="visually-hidden">每条草稿的预期与实测跨度</caption>
+          <thead>
+            <tr>
+              <th scope="col">结果</th>
+              <th scope="col">草稿</th>
+              <th scope="col">考什么</th>
+              <th scope="col">预期</th>
+              <th scope="col">实测</th>
+              <th scope="col">耗时</th>
+            </tr>
+          </thead>
+          <tbody id="cases-body">
+            <tr>
+              <td colspan="6">点击"开始自检"。</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="panel" aria-labelledby="copy-title">
+        <h2 id="copy-title">报告</h2>
+        <p class="panel-note">把这段文本复制出来即可作为验证记录。不含你输入过的任何内容。</p>
+        <textarea id="report" class="report" rows="12" readonly aria-label="自检报告"></textarea>
+        <button id="copy-report" type="button" class="secondary-button">复制报告</button>
+      </section>
+    </main>
+    <script src="diagnostics.js"></script>
+  </body>
+</html>

@@ -1,0 +1,23 @@
+{
+  "settingsVersion": 1,
+  "categoryPolicies": [
+    { "kind": "api_key", "action": "confirm" },
+    { "kind": "access_token", "action": "confirm" },
+    { "kind": "private_key", "action": "confirm" },
+    { "kind": "connection_string", "action": "confirm" },
+    { "kind": "credential", "action": "confirm" },
+    { "kind": "phone", "action": "replace" },
+    { "kind": "email", "action": "replace" },
+    { "kind": "person_name", "action": "confirm" },
+    { "kind": "address", "action": "confirm" },
+    { "kind": "unified_social_credit_code", "action": "confirm" },
+    { "kind": "labeled_identifier", "action": "confirm" },
+    { "kind": "local_path", "action": "replace" },
+    { "kind": "china_id", "action": "confirm" },
+    { "kind": "passport", "action": "confirm" },
+    { "kind": "bank_account", "action": "confirm" },
+    { "kind": "account", "action": "confirm" },
+    { "kind": "private_url", "action": "confirm" },
+    { "kind": "private_date", "action": "confirm" }
+  ]
+}

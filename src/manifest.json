@@ -1,0 +1,67 @@
+{
+  "manifest_version": 3,
+  "name": "AI 私密编辑",
+  "version": "0.4.4",
+  "version_name": "private-composer-r9-send-gate-2026-09-07.1",
+  "description": "在支持的 AI 聊天网页发送前自动本地替换已识别的敏感信息。",
+  "minimum_chrome_version": "116",
+  "permissions": ["storage", "sidePanel", "offscreen"],
+  "icons": {
+    "16": "assets/icons/icon-16.png",
+    "32": "assets/icons/icon-32.png",
+    "48": "assets/icons/icon-48.png",
+    "128": "assets/icons/icon-128.png"
+  },
+  "action": {
+    "default_title": "管理自定义敏感词",
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "assets/icons/icon-16.png",
+      "32": "assets/icons/icon-32.png",
+      "48": "assets/icons/icon-48.png",
+      "128": "assets/icons/icon-128.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self' 'wasm-unsafe-eval'; object-src 'self';"
+  },
+  "host_permissions": [
+    "https://www.doubao.com/*",
+    "https://doubao.com/*",
+    "https://chat.deepseek.com/*",
+    "https://yuanbao.tencent.com/*",
+    "https://chatgpt.com/*",
+    "https://claude.ai/*",
+    "https://gemini.google.com/*",
+    "https://www.kimi.com/*",
+    "https://www.qianwen.com/*",
+    "https://yiyan.baidu.com/*",
+    "https://wenxin.baidu.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.doubao.com/*",
+        "https://doubao.com/*",
+        "https://chat.deepseek.com/*",
+        "https://yuanbao.tencent.com/*",
+        "https://chatgpt.com/*",
+        "https://claude.ai/*",
+        "https://gemini.google.com/*",
+        "https://www.kimi.com/*",
+        "https://www.qianwen.com/*",
+        "https://yiyan.baidu.com/*",
+        "https://wenxin.baidu.com/*"
+      ],
+      "js": ["content.js"],
+      "css": ["content.css"],
+      "run_at": "document_start"
+    }
+  ]
+}

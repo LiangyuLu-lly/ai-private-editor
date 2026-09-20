@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI 私密编辑</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="popup" aria-labelledby="popup-title">
+      <header class="popup-header">
+        <div class="popup-header-row">
+          <p id="page-guard-status" class="page-status" data-state="unknown" title="当前页未接管或正在检查">—</p>
+          <h1 id="popup-title">把会漏的姓名先写上</h1>
+          <button id="open-private-composer" class="private-composer-launch" type="button">编辑器</button>
+        </div>
+        <p class="local-disclosure">仅保存在此浏览器本地，不会同步或上传。</p>
+        <p id="private-composer-status" class="private-composer-status" role="status" aria-live="polite"></p>
+      </header>
+      <section id="custom-terms-panel" class="popup-panel" role="tabpanel" aria-labelledby="custom-terms-tab">
+        <form id="custom-term-form">
+          <label class="sr-only" for="custom-term-input">添加自定义敏感词，每行一个</label>
+          <textarea
+            id="custom-term-input"
+            rows="2"
+            autocomplete="off"
+            placeholder="每行一个"
+            aria-describedby="custom-term-status"
+          ></textarea>
+          <div class="term-form-actions">
+            <label class="term-group-control" for="custom-term-group">
+              <span>分组</span>
+              <select id="custom-term-group">
+                <option value="other" selected>其他</option>
+                <option value="personal">个人</option>
+                <option value="work">工作</option>
+                <option value="project">项目</option>
+              </select>
+            </label>
+            <button type="submit" class="home-submit">添加</button>
+          </div>
+        </form>
+        <p id="custom-term-status" role="status" aria-live="polite"></p>
+        <section class="term-filters" aria-label="筛选自定义敏感词">
+          <label class="sr-only" for="custom-term-search">搜索词条</label>
+          <input id="custom-term-search" type="search" autocomplete="off" placeholder="搜索词条" />
+          <label class="sr-only" for="custom-term-filter-group">筛选分组</label>
+          <select id="custom-term-filter-group">
+            <option value="all" selected>全部分组</option>
+            <option value="personal">个人</option>
+            <option value="work">工作</option>
+            <option value="project">项目</option>
+            <option value="other">其他</option>
+          </select>
+        </section>
+        <ul id="custom-term-list" aria-label="已保存的自定义敏感词"></ul>
+        <button id="clear-custom-terms" type="button">清空全部</button>
+      </section>
+      <details id="more-settings" class="more-settings">
+        <summary>更多设置</summary>
+      <nav class="popup-tabs" aria-label="设置">
+        <button id="protection-tab" class="popup-tab" type="button" role="tab" aria-selected="false" aria-controls="protection-panel">
+          保护
+        </button>
+        <button id="custom-terms-tab" class="popup-tab" type="button" role="tab" aria-selected="true" aria-controls="custom-terms-panel" aria-label="自定义敏感词">
+          词库
+        </button>
+        <button id="allowlist-tab" class="popup-tab" type="button" role="tab" aria-selected="false" aria-controls="allowlist-panel">
+          白名单
+        </button>
+        <button id="policy-tab" class="popup-tab" type="button" role="tab" aria-selected="false" aria-controls="policy-panel">
+          策略
+        </button>
+        <button id="audit-tab" class="popup-tab" type="button" role="tab" aria-selected="false" aria-controls="audit-panel">
+          审计
+        </button>
+        <button id="config-transfer-tab" class="popup-tab" type="button" role="tab" aria-selected="false" aria-controls="config-transfer-panel" aria-label="配置迁移">
+          迁移
+        </button>
+      </nav>
+      <section id="allowlist-panel" class="popup-panel" role="tabpanel" aria-labelledby="allowlist-tab" hidden>
+        <p class="allowlist-disclosure">白名单命中后会按原文发送，仅保存在此浏览器。</p>
+        <form id="allowlist-form">
+          <label class="sr-only" for="allowlist-input">添加白名单值，每行一个</label>
+          <textarea
+            id="allowlist-input"
+            rows="3"
+            autocomplete="off"
+            placeholder="每行一个精确值"
+            aria-describedby="allowlist-status"
+          ></textarea>
+          <div class="allowlist-scope-controls">
+            <label for="allowlist-scope">
+              <span>范围</span>
+              <select id="allowlist-scope">
+                <option value="global" selected>所有支持网站</option>
+                <option value="site">指定网站</option>
+              </select>
+            </label>
+            <label id="allowlist-site-control" for="allowlist-site" hidden>
+              <span>网站</span>
+              <select id="allowlist-site">
+                <option value="doubao" selected>豆包</option>
+                <option value="deepseek">DeepSeek</option>
+                <option value="yuanbao">元宝</option>
+                <option value="chatgpt">ChatGPT</option>
+                <option value="claude">Claude</option>
+                <option value="gemini">Gemini</option>
+                <option value="kimi">Kimi</option>
+                <option value="qwen">通义千问</option>
+                <option value="wenxin">文心一言</option>
+              </select>
+            </label>
+            <label id="allowlist-expiry-control" for="allowlist-expiry" hidden>
+              <span>有效期</span>
+              <select id="allowlist-expiry">
+                <option value="one_hour">1 小时</option>
+                <option value="one_day" selected>1 天</option>
+                <option value="seven_days">7 天</option>
+                <option value="never">永久</option>
+              </select>
+            </label>
+          </div>
+          <button type="submit">加入白名单</button>
+        </form>
+        <p id="allowlist-status" role="status" aria-live="polite"></p>
+        <label class="sr-only" for="allowlist-search">搜索白名单</label>
+        <input id="allowlist-search" type="search" autocomplete="off" placeholder="搜索白名单" />
+        <ul id="allowlist-list" aria-label="已保存的白名单值"></ul>
+        <button id="clear-allowlist" type="button">清空白名单</button>
+      </section>
+      <section id="policy-panel" class="popup-panel" role="tabpanel" aria-labelledby="policy-tab" hidden>
+        <p class="policy-disclosure">默认按内置规则处理。始终阻止会停止本次操作，可通过白名单或调整策略后继续。</p>
+        <div class="policy-scope-controls">
+          <label for="policy-scope">
+            <span>范围</span>
+            <select id="policy-scope">
+              <option value="global" selected>所有支持网站</option>
+              <option value="site">指定网站</option>
+            </select>
+          </label>
+          <label id="policy-site-control" for="policy-site" hidden>
+            <span>网站</span>
+            <select id="policy-site">
+              <option value="doubao" selected>豆包</option>
+              <option value="deepseek">DeepSeek</option>
+              <option value="yuanbao">元宝</option>
+              <option value="chatgpt">ChatGPT</option>
+              <option value="claude">Claude</option>
+              <option value="gemini">Gemini</option>
+              <option value="kimi">Kimi</option>
+              <option value="qwen">通义千问</option>
+              <option value="wenxin">文心一言</option>
+            </select>
+          </label>
+        </div>
+        <div class="preset-controls">
+          <label for="preset-pack">
+            <span>专业预设</span>
+            <select id="preset-pack">
+              <option value="" selected>选择预设</option>
+              <option value="personal">个人</option>
+              <option value="work">工作</option>
+              <option value="legal">法律</option>
+              <option value="medical">医疗</option>
+              <option value="finance">金融</option>
+              <option value="rd">研发</option>
+            </select>
+          </label>
+          <button id="apply-preset" type="button">应用预设</button>
+          <button id="confirm-preset" type="button" hidden>确认应用</button>
+        </div>
+        <p id="policy-status" role="status" aria-live="polite"></p>
+        <ul id="policy-list" aria-label="敏感信息类别策略"></ul>
+      </section>
+      <section id="audit-panel" class="popup-panel" role="tabpanel" aria-labelledby="audit-tab" hidden>
+        <section class="mode-control" aria-label="本地审计开关">
+          <span class="mode-label">本地审计</span>
+          <label class="mode-switch" for="audit-enabled">
+            <span class="sr-only">启用本地审计</span>
+            <input id="audit-enabled" type="checkbox" role="switch" aria-describedby="audit-status" />
+            <span class="mode-switch-visual" aria-hidden="true"></span>
+          </label>
+        </section>
+        <p class="audit-disclosure">仅记录站点、操作结果、敏感类别和数量；不记录原文、令牌或字段名。</p>
+        <p id="audit-status" role="status" aria-live="polite"></p>
+        <ul id="audit-list" aria-label="本地审计记录"></ul>
+        <label class="sr-only" for="audit-export">审计导出 JSON</label>
+        <textarea id="audit-export" rows="4" readonly hidden aria-label="审计导出 JSON"></textarea>
+        <button id="export-audit-log" type="button">导出审计记录</button>
+        <button id="clear-audit-log" type="button">清空审计记录</button>
+      </section>
+      <section id="config-transfer-panel" class="popup-panel" role="tabpanel" aria-labelledby="config-transfer-tab" hidden>
+        <p class="transfer-disclosure">默认不导出白名单；勾选后导出内容可能含敏感原文，请勿分享给他人。不包含审计记录和会话令牌。</p>
+        <label class="sr-only" for="configuration-transfer">本地配置 JSON</label>
+        <textarea
+          id="configuration-transfer"
+          rows="8"
+          autocomplete="off"
+          spellcheck="false"
+          placeholder="生成导出配置，或粘贴已导出的配置 JSON"
+          aria-describedby="config-transfer-status"
+        ></textarea>
+        <div class="config-transfer-actions">
+          <button id="export-configuration" type="button">生成配置</button>
+          <button id="import-configuration" type="button">导入</button>
+        </div>
+        <label class="import-mode-control" for="import-mode">
+          <span>导入方式</span>
+          <select id="import-mode">
+            <option value="replace" selected>替换现有配置</option>
+            <option value="merge">合并白名单</option>
+          </select>
+        </label>
+        <label class="export-allowlist-control" for="export-include-allowlist">
+          <input id="export-include-allowlist" type="checkbox" />
+          <span>导出白名单值（可能包含敏感原文）</span>
+        </label>
+        <p id="config-transfer-status" role="status" aria-live="polite"></p>
+      </section>
+      <section id="protection-panel" class="popup-panel" role="tabpanel" aria-labelledby="protection-tab" hidden>
+        <div class="protection-grid">
+          <label class="protection-field" for="detection-profile">
+            <span>检测范围</span>
+            <select id="detection-profile" aria-describedby="protection-status">
+              <option value="conservative">保守</option>
+              <option value="balanced">平衡</option>
+            </select>
+          </label>
+          <label class="protection-field" for="replacement-style">
+            <span>替换方式</span>
+            <select id="replacement-style" aria-describedby="protection-status">
+              <option value="token">令牌</option>
+              <option value="masked">部分掩码</option>
+              <option value="surrogate">类型占位</option>
+            </select>
+          </label>
+          <label class="protection-field" for="attachment-action">
+            <span>附件提醒</span>
+            <select id="attachment-action" aria-describedby="protection-status">
+              <option value="allow">不提示</option>
+              <option value="warn">提示后继续</option>
+              <option value="confirm">发送前确认</option>
+              <option value="block">阻止并允许单次继续</option>
+            </select>
+          </label>
+          <section class="mode-control protection-switch" aria-label="回复令牌查看">
+            <span class="mode-label">回复令牌查看</span>
+            <label class="mode-switch" for="reply-token-viewer-enabled">
+              <span class="sr-only">回复令牌查看</span>
+              <input id="reply-token-viewer-enabled" type="checkbox" role="switch" aria-describedby="protection-status" />
+              <span class="mode-switch-visual" aria-hidden="true"></span>
+            </label>
+          </section>
+          <label class="protection-field" for="semantic-review">
+            <span>语义审查</span>
+            <select id="semantic-review" aria-describedby="semantic-review-status">
+              <option value="off">关闭</option>
+              <option value="local_statistical">本地统计模型</option>
+              <option value="local_neural">本地神经模型（更全，占用更多内存）</option>
+            </select>
+          </label>
+        </div>
+        <button id="clear-session-map" type="button">清除已打开页面的会话映射</button>
+        <a id="open-local-scanner" class="scanner-launch" href="scanner.html" target="_blank" rel="noopener">本地文件扫描</a>
+        <a id="open-diagnostics" class="scanner-launch" href="diagnostics.html" target="_blank" rel="noopener">本地模型自检</a>
+        <p class="protection-disclosure">「保守」且语义审查关闭时，没有提示词的人名通常不会提示，原文会按网页发出。</p>
+        <p class="protection-disclosure">附件提醒只检查已声明的输入区附件节点，不读取文件内容。选择“发送前确认”或“阻止”后，未声明附件能力的站点会暂停本次发送并要求明确放行。</p>
+        <p id="semantic-review-status" class="protection-disclosure" role="status" aria-live="polite"></p>
+        <p id="protection-status" role="status" aria-live="polite"></p>
+        <section class="mode-control" aria-label="发送策略">
+          <span class="mode-label">严格模式</span>
+          <label class="mode-switch" for="strict-redaction-mode">
+            <span class="sr-only">严格模式</span>
+            <input id="strict-redaction-mode" type="checkbox" role="switch" aria-describedby="custom-term-status" />
+            <span class="mode-switch-visual" aria-hidden="true"></span>
+          </label>
+        </section>
+      </section>
+      </details>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>
