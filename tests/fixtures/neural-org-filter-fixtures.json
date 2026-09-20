@@ -1,0 +1,142 @@
+{
+  "source": "ml/src/chinese_pii_training/hybrid.py COMMON_NON_PERSON_NAMES",
+  "generator": "ml/reports/generated/r7/emit_org_filter_fixtures.py",
+  "names": [
+    "中关村",
+    "华为",
+    "天安门",
+    "小米",
+    "王府井",
+    "百度",
+    "腾讯",
+    "阿里",
+    "黄鹤楼"
+  ],
+  "cases": [
+    {
+      "value": "中关村",
+      "rejected": true,
+      "note": "member of hybrid.py COMMON_NON_PERSON_NAMES"
+    },
+    {
+      "value": "华为",
+      "rejected": true,
+      "note": "member of hybrid.py COMMON_NON_PERSON_NAMES"
+    },
+    {
+      "value": "天安门",
+      "rejected": true,
+      "note": "member of hybrid.py COMMON_NON_PERSON_NAMES"
+    },
+    {
+      "value": "小米",
+      "rejected": true,
+      "note": "member of hybrid.py COMMON_NON_PERSON_NAMES"
+    },
+    {
+      "value": "王府井",
+      "rejected": true,
+      "note": "member of hybrid.py COMMON_NON_PERSON_NAMES"
+    },
+    {
+      "value": "百度",
+      "rejected": true,
+      "note": "member of hybrid.py COMMON_NON_PERSON_NAMES"
+    },
+    {
+      "value": "腾讯",
+      "rejected": true,
+      "note": "member of hybrid.py COMMON_NON_PERSON_NAMES"
+    },
+    {
+      "value": "阿里",
+      "rejected": true,
+      "note": "member of hybrid.py COMMON_NON_PERSON_NAMES"
+    },
+    {
+      "value": "黄鹤楼",
+      "rejected": true,
+      "note": "member of hybrid.py COMMON_NON_PERSON_NAMES"
+    },
+    {
+      "value": "华为民",
+      "rejected": false,
+      "note": "real given name starting with a listed organisation; exact match keeps it"
+    },
+    {
+      "value": "小米兰",
+      "rejected": false,
+      "note": "same shape, different surname"
+    },
+    {
+      "value": "阿里木",
+      "rejected": false,
+      "note": "Uyghur given name that begins with a listed organisation"
+    },
+    {
+      "value": "百度成",
+      "rejected": false,
+      "note": "listed organisation as a name prefix"
+    },
+    {
+      "value": "王府井东街",
+      "rejected": false,
+      "note": "longer string containing a listed name; substring matching would reject it"
+    },
+    {
+      "value": "黄鹤楼路",
+      "rejected": false,
+      "note": "street containing a listed landmark; substring matching would reject it"
+    },
+    {
+      "value": "黄鹤楼民",
+      "rejected": false,
+      "note": "real-name shape containing a listed landmark as a prefix"
+    },
+    {
+      "value": "天安门东",
+      "rejected": false,
+      "note": "longer string containing a listed landmark; substring matching would reject it"
+    },
+    {
+      "value": "马云",
+      "rejected": false,
+      "note": "the extension's regex predicate rejects this via 云 as an organisation marker; this one must not"
+    },
+    {
+      "value": "云丽",
+      "rejected": false,
+      "note": "the same regex deletes this real name; that is why the regex route was declined"
+    },
+    {
+      "value": "馨云",
+      "rejected": false,
+      "note": "gold-matching name on OpenPII lost to the regex route"
+    },
+    {
+      "value": "筑云",
+      "rejected": false,
+      "note": "gold-matching name on OpenPII lost to the regex route"
+    },
+    {
+      "value": "華為",
+      "rejected": false,
+      "note": "traditional form; hybrid.py holds simplified only, so this is kept"
+    },
+    {
+      "value": "騰訊",
+      "rejected": false,
+      "note": "traditional form"
+    },
+    {
+      "value": "周妍舒",
+      "rejected": false,
+      "note": "ordinary bare personal name, the case the model exists to catch"
+    },
+    {
+      "value": "",
+      "rejected": false,
+      "note": "empty span"
+    }
+  ]
+}

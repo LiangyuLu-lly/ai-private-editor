@@ -1,0 +1,214 @@
+{
+  "max_length": 256,
+  "stride": 64,
+  "cases": [
+    {
+      "length": 1,
+      "content_tokens_total": 1,
+      "window_count": 1,
+      "windows": [
+        {
+          "token_count": 3,
+          "content_token_count": 1,
+          "char_start": 0,
+          "char_end": 1
+        }
+      ]
+    },
+    {
+      "length": 10,
+      "content_tokens_total": 10,
+      "window_count": 1,
+      "windows": [
+        {
+          "token_count": 12,
+          "content_token_count": 10,
+          "char_start": 0,
+          "char_end": 10
+        }
+      ]
+    },
+    {
+      "length": 200,
+      "content_tokens_total": 167,
+      "window_count": 1,
+      "windows": [
+        {
+          "token_count": 169,
+          "content_token_count": 167,
+          "char_start": 0,
+          "char_end": 200
+        }
+      ]
+    },
+    {
+      "length": 253,
+      "content_tokens_total": 211,
+      "window_count": 1,
+      "windows": [
+        {
+          "token_count": 213,
+          "content_token_count": 211,
+          "char_start": 0,
+          "char_end": 253
+        }
+      ]
+    },
+    {
+      "length": 254,
+      "content_tokens_total": 212,
+      "window_count": 1,
+      "windows": [
+        {
+          "token_count": 214,
+          "content_token_count": 212,
+          "char_start": 0,
+          "char_end": 254
+        }
+      ]
+    },
+    {
+      "length": 255,
+      "content_tokens_total": 213,
+      "window_count": 1,
+      "windows": [
+        {
+          "token_count": 215,
+          "content_token_count": 213,
+          "char_start": 0,
+          "char_end": 255
+        }
+      ]
+    },
+    {
+      "length": 300,
+      "content_tokens_total": 251,
+      "window_count": 1,
+      "windows": [
+        {
+          "token_count": 253,
+          "content_token_count": 251,
+          "char_start": 0,
+          "char_end": 300
+        }
+      ]
+    },
+    {
+      "length": 500,
+      "content_tokens_total": 416,
+      "window_count": 2,
+      "windows": [
+        {
+          "token_count": 256,
+          "content_token_count": 254,
+          "char_start": 0,
+          "char_end": 303
+        },
+        {
+          "token_count": 228,
+          "content_token_count": 226,
+          "char_start": 225,
+          "char_end": 500
+        }
+      ]
+    },
+    {
+      "length": 1000,
+      "content_tokens_total": 832,
+      "window_count": 5,
+      "windows": [
+        {
+          "token_count": 256,
+          "content_token_count": 254,
+          "char_start": 0,
+          "char_end": 303
+        },
+        {
+          "token_count": 256,
+          "content_token_count": 254,
+          "char_start": 225,
+          "char_end": 535
+        },
+        {
+          "token_count": 256,
+          "content_token_count": 254,
+          "char_start": 457,
+          "char_end": 760
+        },
+        {
+          "token_count": 256,
+          "content_token_count": 254,
+          "char_start": 683,
+          "char_end": 992
+        },
+        {
+          "token_count": 74,
+          "content_token_count": 72,
+          "char_start": 914,
+          "char_end": 1000
+        }
+      ]
+    },
+    {
+      "length": 2000,
+      "content_tokens_total": 1662,
+      "window_count": 9,
+      "windows": [
+        {
+          "token_count": 256,
+          "content_token_count": 254,
+          "char_start": 0,
+          "char_end": 303
+        },
+        {
+          "token_count": 256,
+          "content_token_count": 254,
+          "char_start": 225,
+          "char_end": 535
+        },
+        {
+          "token_count": 256,
+          "content_token_count": 254,
+          "char_start": 457,
+          "char_end": 760
+        },
+        {
+          "token_count": 256,
+          "content_token_count": 254,
+          "char_start": 683,
+          "char_end": 992
+        },
+        {
+          "token_count": 256,
+          "content_token_count": 254,
+          "char_start": 914,
+          "char_end": 1218
+        },
+        {
+          "token_count": 256,
+          "content_token_count": 254,
+          "char_start": 1145,
+          "char_end": 1449
+        },
+        {
+          "token_count": 256,
+          "content_token_count": 254,
+          "char_start": 1371,
+          "char_end": 1681
+        },
+        {
+          "token_count": 256,
+          "content_token_count": 254,
+          "char_start": 1603,
+          "char_end": 1906
+        },
+        {
+          "token_count": 144,
+          "content_token_count": 142,
+          "char_start": 1828,
+          "char_end": 2000
+        }
+      ]
+    }
+  ]
+}
